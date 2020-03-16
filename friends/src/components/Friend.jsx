@@ -1,8 +1,19 @@
 import React from "react";
 import faker from "faker";
 import "./Friend.scss";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-function Friend({ name, age, email }) {
+function Friend({ name, age, email, id, getData }) {
+  const deleteFriend = id => {
+    axiosWithAuth()
+      .delete(`/friends/${id}`)
+      .then(res => {
+        console.log(res.data);
+        getData();
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <div className="ui card">
       <div className="ui slide masked reveal image">
@@ -15,6 +26,12 @@ function Friend({ name, age, email }) {
       <div className="meta">
         <p className="date">{age}</p>
         <p className="date">{email}</p>
+        <button
+          className="date ui button cardButton"
+          onClick={() => deleteFriend(id)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

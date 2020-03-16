@@ -10,7 +10,7 @@ function FriendsList() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [setFriends]);
 
   const getData = () => {
     axiosWithAuth()
@@ -42,6 +42,8 @@ function FriendsList() {
               age={friend.age}
               email={friend.email}
               key={index}
+              id={friend.id}
+              getData={getData}
             />
           );
         })}
