@@ -22,30 +22,41 @@ function AddForm(props) {
   return (
     <div>
       <h1>Add a Friend</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={friend.name}
-          onChange={handleChange}
-          placeholder="Name"
-        />
-        <input
-          type="number"
-          name="age"
-          value={friend.age}
-          onChange={handleChange}
-          placeholder="Age"
-        />
-        <input
-          type="email"
-          name="email"
-          value={friend.email}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-        <button type="submit">Add Friend</button>
+      <form className="ui form add-form" onSubmit={handleSubmit}>
+        <div className="field">
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value={friend.name}
+            onChange={handleChange}
+            placeholder="Name"
+          />
+        </div>
+        <div className="field">
+          <label>Age</label>
+          <input
+            type="number"
+            name="age"
+            value={friend.age}
+            onChange={handleChange}
+            placeholder="Age"
+          />
+        </div>
+        <div className="field">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={friend.email}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+        </div>
       </form>
+      <button className="ui button" type="submit">
+        Add Friend
+      </button>
     </div>
   );
 }

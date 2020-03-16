@@ -6,3 +6,8 @@
 li {
   list-style-type: none;
 }
+
+.field {
+  max-width: 20%;
+  margin: auto;
+}
