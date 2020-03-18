@@ -1,11 +1,15 @@
+import "./AddForm.scss";
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import "./AddForm.scss";
 
 function AddForm(props) {
-  const [friend, setFriend] = useState({ name: "", age: "", email: "" });
+  const [friend, setFriend] = useState({
+    name: "",
+    age: "",
+    email: ""
+  });
 
-  const handleChange = e => {
+  const handleChanges = e => {
     setFriend({ ...friend, [e.target.name]: e.target.value });
   };
 
@@ -14,48 +18,51 @@ function AddForm(props) {
     axiosWithAuth()
       .post("/friends", friend)
       .then(res => {
+        console.log(res);
         props.getData();
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
     <div>
-      <h1>Add a Friend</h1>
-      <form className="ui form add-form" onSubmit={handleSubmit}>
+      <h1>Add a new Friend</h1>
+      <form className="ui form add-form">
         <div className="field">
-          <label>Name</label>
+          <label> Name</label>
           <input
             type="text"
             name="name"
+            placeholder="enter name"
             value={friend.name}
-            onChange={handleChange}
-            placeholder="Name"
+            onChange={handleChanges}
           />
         </div>
         <div className="field">
-          <label>Age</label>
+          <label>age</label>
           <input
             type="number"
             name="age"
+            placeholder="enter age"
             value={friend.age}
-            onChange={handleChange}
-            placeholder="Age"
+            onChange={handleChanges}
           />
         </div>
         <div className="field">
-          <label>Email</label>
+          <label>email</label>
           <input
             type="email"
             name="email"
+            placeholder="enter email"
             value={friend.email}
-            onChange={handleChange}
-            placeholder="Email"
+            onChange={handleChanges}
           />
         </div>
       </form>
-      <button className="ui button" type="submit">
-        Add Friend
+      <button onClick={handleSubmit} className="data ui button" type="submit">
+        Submit
       </button>
     </div>
   );

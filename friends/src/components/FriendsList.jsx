@@ -22,6 +22,10 @@ function FriendsList() {
       .catch(err => console.log(err));
   };
 
+  const addFriend = friend => {
+    const newFriend = setFriends([...friends, friend]);
+  };
+
   if (friends.length === 0) {
     return (
       <div className="key spinner">
@@ -33,7 +37,7 @@ function FriendsList() {
 
   return (
     <div className="wrapper">
-      <AddForm getData={getData} />
+      <AddForm getData={getData} addFriend={addFriend} />
       <div className="friend-list">
         {friends.map((friend, index) => {
           return (
@@ -48,7 +52,6 @@ function FriendsList() {
           );
         })}
       </div>
-      <h1>Content</h1>
     </div>
   );
 }
