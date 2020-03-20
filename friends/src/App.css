@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+  margin: auto;
+}
+
+ul {
+  padding-right: 40px;
+}
+
+.field {
+  max-width: 20%;
+  margin: auto;
+}
